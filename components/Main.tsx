@@ -23,7 +23,7 @@ const Main = () => {
 
   const fetchNotes = async () => {
     const { data, error } = await supabase
-      .from("notenote")
+      .from("your_table_name_supabase")
       .select("*")
       .order("id", { ascending: false });
     if (error) console.log("Error fetching notes: ", error);
@@ -32,7 +32,7 @@ const Main = () => {
 
   const addNote = async () => {
     const { data, error } = await supabase
-      .from("notenote")
+      .from("your_table_name_supabase")
       .insert([{ title, message }]);
     if (error) console.log("Error adding note: ", error);
     else {
@@ -44,7 +44,7 @@ const Main = () => {
 
   const deleteNote = async (id: number) => {
     const { data, error } = await supabase
-      .from("notenote")
+      .from("your_table_name_supabase")
       .delete()
       .eq("id", id);
     if (error) console.log("Error deleting note: ", error);
@@ -71,7 +71,7 @@ const Main = () => {
   const updateNote = async () => {
     if (editNote) {
       const { data, error } = await supabase
-        .from("notenote")
+        .from("your_table_name_supabase")
         .update({ title: editTitle, message: editMessage })
         .eq("id", editNote.id);
       if (error) console.log("Error updating note: ", error);
